@@ -4,6 +4,12 @@
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: "Slabo 27px", serif; 
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+h2 {
+	font-size: 26pt; 
 }
 
 p {
@@ -106,22 +112,19 @@ nav .cross {
 /* --- CONTENT --- */
 
 .content {
-	float: left;
-	overflow: hidden; 
+	margin: auto auto;
 	width: 100%;
 }
 
 .topimg {
-	float: left; 
 	width: 100%;
 }
 
 /* --- Articles --- */
 
 .news {
-	float: left; 
+	margin-top: 30px;
 	width: 100%;
-	overflow: hidden; 
 }
 
 #border {
@@ -137,10 +140,7 @@ nav .cross {
 }
 
 .article {
-	float: left; 
-	width: 100%;
-	padding: 0px 30px;
-	margin: 0;
+	padding: 0px 30px 30px 0px;
 }
 
 @media (min-width: 928px) {
@@ -174,7 +174,7 @@ nav .cross {
 		margin-top: 0px; 
 	}
 
-	nav li:hover {
+	nav li:hover { 
 		background: #fff; 
 	}
 
@@ -185,14 +185,19 @@ nav .cross {
 	/* --- CONTENT ---*/
 
 	.content {
-		margin: 30px auto;
 		width: 900px;
 	}
 
 	.news {
-		max-width: 600px; 
-		padding-right: 30px; 
-		border-right: 1px solid #ddd;
+		width: 570px;
+		padding-right: 30px;
 	}
 
+}
+
+@media (min-width: 729px) and (max-width: 927px){
+	.content {
+		min-width: 729px;
+		max-width: 927px; 
+	}
 }
