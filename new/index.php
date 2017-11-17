@@ -30,6 +30,31 @@
 				}
 			?>
 		</div>
+		<aside>
+			<div class="top5">
+				<h3>TOP 5</h3>
+				<ul>
+					<li>TITEL - Author</li>
+					<li>TITEL - Author</li>
+					<li>TITEL - Author</li>
+					<li>TITEL - Author</li>
+					<li>TITEL - Author</li>
+				</ul>
+			</div>
+			<div class="recent">
+				<h3>RECENT POSTS</h3>
+				<ul>
+					<?php 
+						$stmt = $db->prepare($query);
+						$stmt->bind_result($articleID, $title, $text, $author, $date);
+						$stmt->execute();
+						while ($stmt->fetch()) {
+							echo "<li><a href='articleBase.php/articleID=$articleID'> $title </a></li>";
+						}
+					 ?>
+				</ul>
+			</div>
+		</aside>
 
 	</div>
 </body>
