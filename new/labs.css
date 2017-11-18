@@ -189,8 +189,52 @@ input {
 	margin: 5px 0px;
 }
 
-#submit {
+.submit {
+	border-radius: 0px;
 	text-align: center; 
+	width: 103%;
+}
+
+.submit:hover {
+	background: #f47400; 
+	color: white;
+	border: 0px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th {
+	color: #f47400;
+	text-align: left; 
+	padding: 10px 0px; 
+	
+}
+
+td {
+	padding: 5px 0px; 
+}
+
+.return {
+	margin-bottom: 5px; 
+	background: #f47400;
+	border-radius: 5px; 
+	text-align: center;
+	color: #fff; 
+}
+
+.return:hover {
+	background: #fff;
+	border-radius: 5px; 
+	border: 1px solid #f47400;
+	color: #f47400;
+	cursor: pointer;
+}
+
+form {
+	margin-bottom: 20px; 
 }
 
 @media (min-width: 928px) {
