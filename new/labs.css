@@ -198,7 +198,7 @@ input {
 .submit:hover {
 	background: #f47400; 
 	color: white;
-	border: 0px;
+	border: 1px solid #f47400;
 }
 
 table {
@@ -214,15 +214,16 @@ th {
 }
 
 td {
-	padding: 5px 0px; 
+	padding: 10px 0px; 
 }
 
 .return {
-	margin-bottom: 5px; 
+	padding: 5px; 
 	background: #f47400;
 	border-radius: 5px; 
 	text-align: center;
 	color: #fff; 
+	border: 1px solid #f47400;
 }
 
 .return:hover {
