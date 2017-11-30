@@ -52,6 +52,5 @@
 				<a id="fileUpload" href="SQLInjection.php"> Click here</a>	
 			</aside>	
 		</div>		
-		<?php include("footer.php"); ?>
 	</body>
 </html>

@@ -21,7 +21,7 @@
 //    }
 
 //connect to the relevant database
-@ $db = new mysqli('localhost', 'root', '', 'Bibblan');
+@ $db = new mysqli('localhost', 'root', '', 'Reeds');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -62,7 +62,7 @@ if (isset($_POST['username'], $_POST['password'])) {
     #just to see what we are selecting, and we can use it to test in phpmyadmin/heidisql
     	
     //select the username that are the same as the inputted one
-    $query = ("SELECT * FROM Userinformation WHERE username = '{$uname}' "." AND password = '{$upass}'");
+    $query = ("SELECT * FROM users WHERE username = '{$uname}' "." AND password = '{$upass}'");
        
     //prepare the query and store it when it is executed. 
     $stmt = $db->prepare($query);

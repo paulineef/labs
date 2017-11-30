@@ -74,7 +74,7 @@ get_comment();
 <!DOCTYPE>
 <html>
     <head>
-        <meta http-equiv="Content_Type" content="text/html; charset=utf-8"
+        <meta http-equiv="Content_Type" content="text/html; charset=utf-8">
     </head>
     <body>
         <div>

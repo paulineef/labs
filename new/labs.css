@@ -235,7 +235,22 @@ td {
 }
 
 form {
+	display: block; 
 	margin-bottom: 20px; 
+}
+
+.half ul {
+	padding:0;
+}
+
+.imglist {
+	list-style-type: none; 
+	padding-bottom: 10px;
+	padding-right: 10px; 
+}
+
+.imglist img {
+	width: 200px;
 }
 
 @media (min-width: 928px) {
