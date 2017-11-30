@@ -321,6 +321,11 @@ form {
 		margin-bottom: 30px; 
 	}
 
+	.imglist {
+		width: 200px;
+		float: left; 
+	}
+
 	.article {
 		padding: 0px 30px 30px 0px;
 	}
