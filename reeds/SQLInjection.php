@@ -61,6 +61,7 @@ if (isset($_POST['username'], $_POST['password'])) {
     <body>
         <div class="content">
             <div class="half">
+            <img src="img/logo.svg" style="width: 50px;">
                <h2>LOGIN</h2>
                 <?php
                 

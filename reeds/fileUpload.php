@@ -9,6 +9,7 @@
         <img class="topimg" src="img/upload.png"/>
             <div class="content">
               <div class="half">
+                <img src="img/logo.svg" style="width: 50px;">
                 <h2> UPLOAD FILES </h2>
                   <div>
                     <form action="" method="POST" enctype="multipart/form-data" >

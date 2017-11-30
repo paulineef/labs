@@ -39,18 +39,22 @@ if (isset($_SESSION['admin'])) {
 
 <html>
 <head>
-  <title>Login</title>
-  <link rel="stylesheet" type="text/css" href="labs.css">
+  	<title>Admin Login</title>
+  	<link rel="stylesheet" type="text/css" href="labs.css">
+  	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900|Slabo+27px" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
 <div class="content">
 	<div class="half">
-	<h2> ADMIN LOGIN</h2>
+		<img src="img/logo.svg" style="width: 50px;">
+	<h2> ADMIN LOGIN </h2>
        <form method="POST" action="addbook.php">
-            <input type="text" name="aUsername">
-            <input type="password" name="aPassword">
+            <input type="text" name="aUsername" placeholder="Username">
+            <input type="password" name="aPassword" placeholder="Password">
             <input type="submit" value="Login" class="submit">
         </form>
+    <a href="index.php"><- Back</a>
     </div>
 </div>
 </body>
