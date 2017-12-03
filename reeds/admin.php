@@ -1,41 +1,37 @@
+<?php include("config.php"); ?>
+
 <?php
-session_start();
-if (isset($_SESSION['admin'])) {
-    header("location:addbook.php");
-}
-?>
-<?php include("../config.php"); ?>
+	session_start();
 
-<?php if(isset($_POST) && !empty($_POST)) : ?>
-
-<?php 
-	$myusername =  stripslashes($_POST['aUsername']);
-	$mypassword =  stripslashes($_POST['aPassword']);
-	
-	@ $db = new mysqli('localhost', 'root', 'root', 'reads');
-
-	if ($db->connect_error) {
-		echo "could not connect: " . $db->connect_error;
-		exit();
+	if (isset($_SESSION['admin'])) {
+	    header("location: welcome.php");
 	}
 
-	$stmt = $db->prepare("SELECT aname, apass FROM reeds WHERE username = ?");
-	$stmt->bind_param('s', $aUsername);
-	$stmt->execute();
-	
-    $stmt->bind_result($aname, $apass);
+	if(isset($_POST) && !empty($_POST));
+		$myusername =  stripslashes($_POST['aUsername']);
+		$mypassword =  stripslashes($_POST['aPassword']);
+		
+		@ $db = new mysqli('localhost', 'root', 'root', 'reads');
 
-    while ($stmt->fetch()) {
-        if (sha1($aPassword) == $apass)
-		{
-			$_SESSION['admin'] = $aUsername;
-			header("location:addbook.php");
+		if ($db->connect_error) {
+			echo "could not connect: " . $db->connect_error;
 			exit();
 		}
-    }
-?>
 
-<?php endif;?>
+		$stmt = $db->prepare("SELECT aname, apass FROM reeds WHERE username = ?");
+		$stmt->bind_param($apass, $aUsername);
+		$stmt->execute();
+		
+	    $stmt->bind_result($aname, $apass);
+
+	    while ($stmt->fetch()) {
+	        if (sha1($aPassword) == $apass){
+				$_SESSION['admin'] = $aUsername;
+				header("location:addbook.php");
+				exit();
+			}
+	    }
+?>
 
 <html>
 <head>

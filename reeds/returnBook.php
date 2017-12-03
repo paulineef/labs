@@ -1,15 +1,14 @@
-
 <?php
 
-include("config.php");
+    include("config.php");
 
-$bookID = trim($_GET['bookID']);
-echo '<INPUT type="hidden" name="bookID" value=' . $bookID . '>';
+    $bookID = trim($_GET['bookID']);
+    echo '<INPUT type="hidden" name="bookID" value=' . $bookID . '>';
 
-$bookID = trim($_GET['bookID']);      // From the hidden field
-$bookID = addslashes($bookID);
+    $bookID = trim($_GET['bookID']);
+    $bookID = addslashes($bookID);
 
-@ $db = new mysqli($dbserver, $dbuser, $dbpass, $dbname);
+    @ $db = new mysqli($dbserver, $dbuser, $dbpass, $dbname);
 
     if ($db->connect_error) {
         echo "could not connect: " . $db->connect_error;
@@ -19,7 +18,6 @@ $bookID = addslashes($bookID);
     
    echo $bookID;
 
-    // Prepare an update statement and execute it
     $stmt = $db->prepare("UPDATE books SET reserved=0 WHERE bookID = ?");
     $stmt->bind_param('i', $bookID);
     $stmt->execute();
@@ -28,7 +26,6 @@ $bookID = addslashes($bookID);
     printf("<br><a href=mybooks.php>Return to Reserved Books </a>");
     printf("<br><a href=index.php>Return to home page </a>");
     exit;
-
 ?>
 
     

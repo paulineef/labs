@@ -38,17 +38,14 @@
 			    exit();
 			}
 
-			//if there is anything in the form field
 			if (isset($_POST) && !empty($_POST)) {
 				
 			    $searchtitle = trim($_POST['searchtitle']);
 			    $searchauthor = trim($_POST['searchauthor']);
 
-				//add htmlentities and string escaping to the search function for the title
 				$searchtitle = htmlentities($searchtitle);
 				$searchtitle = mysqli_real_escape_string($db, $searchtitle);
 
-				//add htmlentities and string escaping to the search function for the author
 				$searchauthor = htmlentities($searchauthor);
 				$searchauthor = mysqli_real_escape_string($db, $searchauthor);
 

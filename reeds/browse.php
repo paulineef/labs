@@ -23,17 +23,14 @@
 			    exit();
 			}
 
-			//if there is anything in the form field
 			if (isset($_POST) && !empty($_POST)) {
 				
 			    $searchtitle = trim($_POST['searchtitle']);
 			    $searchauthor = trim($_POST['searchauthor']);
 
-				//add htmlentities and string escaping to the search function for the title
 				$searchtitle = htmlentities($searchtitle);
 				$searchtitle = mysqli_real_escape_string($db, $searchtitle);
 
-				//add htmlentities and string escaping to the search function for the author
 				$searchauthor = htmlentities($searchauthor);
 				$searchauthor = mysqli_real_escape_string($db, $searchauthor);
 
@@ -46,13 +43,13 @@
 					JOIN author_books ON books.bookID = author_books.bookID 
 					JOIN authors ON authors.authorID = author_books.authorID";
 
-			if ($searchtitle && !$searchauthor) { // Title search only
+			if ($searchtitle && !$searchauthor) { 
 			    $query = $query . " where title like '%" . $searchtitle . "%' GROUP BY books.title ";
 			}
-			if (!$searchtitle && $searchauthor) { // Author search only
+			if (!$searchtitle && $searchauthor) { 
 			    $query = $query . " where name like '%" . $searchauthor . "%'";
 			}
-			if ($searchtitle && $searchauthor) { // Title and Author search
+			if ($searchtitle && $searchauthor) { 
 			    $query = $query . " where title like '%" . $searchtitle . "%' and name like '%" . $searchauthor . "%'";
 			}
 			if (!$searchtitle && !$searchingauthor) {
