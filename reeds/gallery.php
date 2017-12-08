@@ -14,7 +14,7 @@
 					
 					foreach ($dir as $img) {
 						if (!$img->isDot()) { //checks if a entry is a "." or ".." and will in that case not include it.
-						  echo "<li class='imglist'><img src=\"uploadedFiles/" . $img->getFilename() . "\"></li>";
+						  echo "<li class='imglist'><img src='uploadedFiles/" . $img->getFilename() . "'></li>";
 						}
 					}
 				?>

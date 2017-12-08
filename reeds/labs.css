@@ -225,6 +225,10 @@ td {
 	padding: 10px 0px; 
 }
 
+table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
 .return {
 	padding: 5px; 
 	background: #f47400;

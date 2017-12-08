@@ -1,38 +1,43 @@
+<?php
+session_start();
+if (isset($_SESSION['username'])) {
+    echo "<a href='welcome.php'> Click to get to the admin page</a>";
+}
+?>
 <?php include("config.php"); ?>
 
-<?php
-	session_start();
+<?php if(isset($_POST) && !empty($_POST)) : ?>
 
-	if (isset($_SESSION['admin'])) {
-	    header("location: welcome.php");
+<?php 
+	$myusername =  stripslashes($_POST['myusername']);
+	$mypassword =  stripslashes($_POST['mypassword']);
+	
+	@ $db = new mysqli(localhost, root, root, reads);
+
+	if ($db->connect_error) {
+		echo "could not connect: " . $db->connect_error;
+		exit();
 	}
 
-	if(isset($_POST) && !empty($_POST));
-		$myusername =  stripslashes($_POST['aUsername']);
-		$mypassword =  stripslashes($_POST['aPassword']);
-		
-		@ $db = new mysqli('localhost', 'root', 'root', 'reads');
+	$stmt = $db->prepare("SELECT username, password FROM admin WHERE username = ?");
+	$stmt->bind_param('s', $myusername);
+	$stmt->execute();
+	
+    $stmt->bind_result($username, $password);
 
-		if ($db->connect_error) {
-			echo "could not connect: " . $db->connect_error;
+    while ($stmt->fetch()) {
+        if (sha1($mypassword) == $password)
+		{
+			$_SESSION['username'] = $myusername;
+				echo "<a href='welcome.php'> Click to get to the admin page</a>";
 			exit();
+		}else {
+			echo "wrong";
 		}
-
-		$stmt = $db->prepare("SELECT aname, apass FROM reeds WHERE username = ?");
-		$stmt->bind_param($apass, $aUsername);
-		$stmt->execute();
-		
-	    $stmt->bind_result($aname, $apass);
-
-	    while ($stmt->fetch()) {
-	        if (sha1($aPassword) == $apass){
-				$_SESSION['admin'] = $aUsername;
-				header("location:addbook.php");
-				exit();
-			}
-	    }
+    }
 ?>
 
+<?php endif;?>
 <html>
 <head>
   	<title>Admin Login</title>
@@ -45,9 +50,9 @@
 	<div class="half">
 		<img src="img/logo.svg" style="width: 50px;">
 	<h2> ADMIN LOGIN </h2>
-       <form method="POST" action="addbook.php">
-            <input type="text" name="aUsername" placeholder="Username">
-            <input type="password" name="aPassword" placeholder="Password">
+       <form method="POST" action="admin/welcome.php">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
             <input type="submit" value="Login" class="submit">
         </form>
     <a href="index.php"><- Back</a>

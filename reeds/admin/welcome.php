@@ -1,3 +1,8 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("admin.php");
+}?>
 <?php include('aHeader.php'); ?>
 <body>
 <img class="topimg" src="../img/admin.png"/>
