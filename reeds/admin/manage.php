@@ -52,11 +52,41 @@ if (isset($_SESSION['username'])) {
 						    printf("<br><a href=manage.php>Try again? </a>");
 						}
 
-						$db->close();
-					    exit;
+						// $db->close();
+					    exit();
 					}
 
+					if (isset($_POST['dbookID'])){
+						$dbookID = trim($_POST['dbookID']);
+						// $dauthorID = trim($_POST['dauthorID']);
+
+							if (!$dbookID) {
+						        printf("You must specify a book.");
+						        printf("<br><a href=manage.php>Get back </a>");
+						        exit();
+					    	}
+
+					        $dbookID = htmlentities($dbookID);
+							$dbookID = mysqli_real_escape_string($db, $dbookID);
+							$dbookID = addslashes($dbookID);
+					        // $dauthorID = addslashes($dauthorID);
+
+					        // $del = "DELETE books.bookID, authors.authorID, author_books.bookID, author_books.authorID FROM books, authors, author_books WHERE bookID='$dbookID' AND authorID='$dauthorID'";
+
+					        $del = "DELETE FROM books WHERE bookID='$dbookID'";
+
+					        if ($db->query($del) === TRUE) {
+							    echo "Record deleted successfully";
+							} else {
+							    echo "Error deleting record: " . $db->error;
+							    printf("<br><a href=manage.php style='color: green;'>Try again? </a>");
+							} 
+					 
+					    // $db->close();
+					 	exit(); 
+					}
 				?>
+				<!-- Add book -->
 				<form method="POST" action="manage.php">
 					<input type="text" name="bookID" placeholder="Book ID (a number)">
 					<input type="text" name="title" placeholder="Title">
@@ -66,23 +96,6 @@ if (isset($_SESSION['username'])) {
 				</form>
 
 				<h4>Delete a book</h4>
-
-					<?php 
-					if isset($_POST['dbookID'])){
-						$dbookID = trim($_POST['dbookID']);
-						// $dauthorID = trim($_POST['dauthorID']);
-
-							if (!$dbookID) {
-					        printf("You must specify a book.");
-					        printf("<br><a href=manage.php>Get back </a>");
-					        exit();
-
-					        $dbookID = addslashes($dbookID);
-
-					        
-					    }
-					}
-					?>
 				<form method="POST" action="manage.php">
 					<input type="number" name="dbookID" placeholder="Book ID">
 					<!-- <input type="number" name="dauthorID" placeholder="Author ID"> -->
